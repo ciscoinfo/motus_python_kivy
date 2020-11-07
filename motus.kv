@@ -1,0 +1,24 @@
+#:import hex kivy.utils.get_color_from_hex
+#:import cst constants
+#:import utils utils
+#:include templates.kv
+#:include gamelayout.kv
+#:include settingslayout.kv
+
+
+<MyScreenManager>:
+    settings_layout: id_settingsLayout
+    game_layout: id_gameLayout
+    screen_settings: id_screen_settings
+    screen_game: id_screen_game
+
+    Screen:
+        id: id_screen_settings
+        name: "screen_settings"
+        SettingsFloatLayout:
+            id: id_settingsLayout
+    Screen:
+        id: id_screen_game
+        name: "screen_game"
+        GameLayout:
+            id: id_gameLayout

@@ -1,0 +1,112 @@
+
+<CustomButton@Button>:
+    pos_hint: {"center_x":.5, "center_y":.5}
+    background_color: (0, 0, 0, 0)
+    # transparent
+    border_radius: [10]
+    border_radius_line: 10
+    back_color: (1, 0, 1, 0)
+    border_color: (0, 0, 0, .5)
+    border_width: 1.5
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+        Color:
+            rgba: self.border_color
+        Line:
+            width: self.border_width
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.border_radius_line)
+
+
+<TriangleButtonRight>:
+
+    size_hint: None, None
+    size: dp(50), dp(50)
+
+    canvas.before:
+        Color:
+            rgb: hex(cst.color_bleu_3) if self.state == 'normal' else hex(cst.violet_1)
+        Triangle:
+            points:self.x,self.y,self.x,self.y + self.height,self.x + self.width,self.y + self.height/2
+        Color:
+            # rgb: hex("#eb9757")
+            rgb: hex(cst.color_orange)
+        Line:
+            width: 2
+            close: True
+            points:self.x,self.y, self.x,self.y + self.height, self.x + self.width,self.y + self.height/2
+
+
+<TriangleButtonLeft>:
+
+    size_hint: None, None
+    size: dp(50), dp(50)
+
+    canvas.before:
+        Color:
+            rgb: hex(cst.color_bleu_3) if self.state == 'normal' else hex(cst.violet_1)
+        Triangle:
+            points: self.x,self.y + self.height/2,self.x + self.width,self.y, self.x + self.width,self.y + self.height
+        Color:
+            rgb: hex(cst.color_orange)
+        Line:
+            width: 2
+            close: True
+            points:self.x,self.y + self.height/2, self.x + self.width, self.y, self.x + self.width, self.y + self.height
+
+
+<RoundLabel@Label>:
+    font_size: dp(50)
+    color: 1, 1, 1, 1
+    size_hint: None, None
+    size: dp(90), dp(90)
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0, 0, 0, .5
+        Line:
+            width: 3
+            #center_x, center_y, rayon
+            circle: self.x + self.width/2, self.y + self.height/2, self.width/2
+
+
+<SmoothButton@Button>:
+    pos_hint: {"center_x":.5, "center_y":.5}
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    back_color: (1, 0, 1, 0)
+    border_radius: [18]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+
+<RoundButton@Button>:
+    pos_hint: {"center_x":.5, "center_y":.5}
+    back_color: (1, 1, 1, 1)
+    background_color: (0, 0, 0, 0)
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+
+<EndButton@Button>:
+    pos_hint: {"center_x":.5, "center_y":.5}
+    font_size: dp(20)
+    size_hint: None, None
+    size: dp(100), dp(40)

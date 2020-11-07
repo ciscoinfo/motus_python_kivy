@@ -1,0 +1,148 @@
+<GameLayout>:
+
+    my_text_input: my_textInput
+    my_grid: my_grid
+    my_bt_validate: id_bt_validate
+    my_bt_replay: id_bt_replay
+    my_bt_settings: id_settings
+
+    MainBoxLayout:
+        MainGrid:
+            id: my_grid
+        InputBox:
+            MyTextInput:
+                id: my_textInput
+            RoundButton:
+                id: id_bt_validate
+                text: "OK"
+                bold: True
+                font_size: dp(25)
+                size_hint: None, None
+                size: dp(70), dp(70)
+                back_color: hex(cst.color_bleu_3) if self.state == 'normal' else hex(cst.violet_1)
+        BottomLayout:
+            cols: 3
+            rows: 1
+
+            RelativeLayout:
+                CustomButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    id: id_settings
+                    text: "Options"
+                    bold: True
+                    font_size: dp(20)
+                    size_hint: None, None
+                    size: dp(100), dp(50)
+                    back_color: hex(cst.color_orange) if self.state == 'normal' else hex(cst.color_orange_f)
+
+            RelativeLayout:
+                CustomButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    id: id_bt_replay
+                    text: "Rejouer"
+                    bold: True
+                    font_size: dp(20)
+                    size_hint: None, None
+                    size: dp(100), dp(50)
+                    back_color: hex(cst.color_orange) if self.state == 'normal' else hex(cst.color_orange_f)
+
+            RelativeLayout:
+                CustomButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    text: "Quitter"
+                    bold: True
+                    font_size: dp(20)
+                    size_hint: None, None
+                    size: dp(100), dp(50)
+                    back_color: hex(cst.color_orange) if self.state == 'normal' else hex(cst.color_orange_f)
+                    on_press: app.stop()
+
+
+<GameLayout>:
+    canvas.before:
+        Color:
+            rgba: hex(cst.color_bleu_2)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<MainBoxLayout>:
+    orientation: "vertical"
+    size_hint: .8, .95
+    pos_hint: {'center_x':.5, 'center_y':.5}
+    spacing: "10dp"
+
+<MainGrid>:
+    size_hint_y: None
+    size_hint_x: 1
+    height: self.width * self.rows / self.cols
+
+    padding: [dp(5), dp(5), dp(5), dp(5)]
+    spacing: [dp(5), dp(5)]
+
+    canvas.before:
+        Color:
+            rgba: utils.rgb_to_kvColor(cst.BG_FRAME_COLOR)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<InputBox>:
+    orientation: "horizontal"
+    spacing: dp(40)
+    padding: [0, dp(10), dp(10), dp(10)]
+    size_hint: 1, None
+    height: dp(90)
+
+
+<MyTextInput>:
+    size_hint: None, 1
+    width: "250dp"
+    hint_text: "Votre mot"
+    font_size: dp(50)
+#   texte validé lorsqu'on appuie sur enter'
+    multiline: False
+
+
+#<BottomBox>:
+#    orientation: "horizontal"
+#    spacing: dp(40)
+##    [padding_left, padding_top, padding_right, padding_bottom]
+#    padding: [dp(20), 0, dp(20), 0]
+#    size_hint: 1, None
+#    height: dp(90)
+
+<BottomLayout>:
+#    canvas.before:
+#        Color:
+#            rgba: 0, 0, 0, 1
+#        Rectangle:
+#            pos: self.pos
+#            size: self.size
+    spacing: dp(40)
+#    [padding_left, padding_top, padding_right, padding_bottom]
+#    padding: [dp(20), 0, dp(20), 0]
+    size_hint: 1, None
+    height: dp(80)
+
+<CustomLabel>:
+    canvas.before:
+        Color:
+            rgba: self.bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: self.bg_color_2
+        Ellipse:
+#            pos: self.center_x - self.width/2, self.center_y - self.height/2
+            pos: self.pos
+            size: self.size
+
+#    canvas.before:
+#        Color:
+#            rgba: 0, 0, 0, 1
+#        Rectangle:
+#            pos: self.pos
+#            size: self.size

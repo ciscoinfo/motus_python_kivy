@@ -1,0 +1,59 @@
+<SettingsFloatLayout>:
+    bt_backward: bt_backward
+    bt_forward: bt_forward
+    lb_counter: lb_counter
+    bt_ok: bt_ok
+
+    canvas.before:
+        Color:
+            rgba: hex(cst.color_bleu_2)
+            # rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: "vertical"
+        size_hint: .8, .8
+        pos_hint: {'center_x':.5, 'center_y':.5}
+        canvas.before:
+            Color:
+                rgba: hex(cst.color_bleu_3)
+            Line:
+                width: 3
+                rectangle: self.x, self.y, self.width, self.height
+        Label:
+            text: "MOTUS"
+            bold: True
+            color: hex(cst.color_orange)
+            font_name: "fonts/DAYPBL__.ttf"
+            font_size: dp(70)
+        Label:
+            text: "Nombre de lettres :"
+            font_size: dp(30)
+            color: 0, 0, 0, 1
+        GridLayout:
+            cols: 3
+            RelativeLayout:
+                TriangleButtonLeft:
+                    id: bt_backward
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            RelativeLayout:
+                RoundLabel:
+                    id: lb_counter
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    text: "5"
+            RelativeLayout:
+                TriangleButtonRight:
+                    id: bt_forward
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        RelativeLayout:
+            CustomButton:
+                id: bt_ok
+                text: "OK"
+                bold: True
+                font_size: dp(30)
+                size_hint: None, None
+                size: dp(100), dp(50)
+                back_color: hex(cst.color_orange) if self.state == 'normal' else hex(cst.color_orange_f)
+
